@@ -2,7 +2,7 @@
 # Win 10 / Server 2016 / Server 2019 Initial Setup Script - Default preset
 # Author: Disassembler <disassembler@dasm.cz>
 # Version: v3.8, 2019-09-11
-# Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script
+# Source : https://github.com/zLian17/Win10-Initial-Setup-Script/edit/master/Default.preset
 ##########
 
 ### Require administrator privileges ###
@@ -226,5 +226,5 @@ UninstallXPSPrinter             # InstallXPSPrinter
 # UnpinTaskbarIcons
 
 ### Auxiliary Functions ###
-WaitForKey
-Restart
+WaitForKey  # Tambah 'tagar' jika tidak mau konfirmasi
+Restart  # Tambah 'tagar' jika tidak mau restart
