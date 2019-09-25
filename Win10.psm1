@@ -15,7 +15,7 @@
 # In such case, enable telemetry, run Windows update and then disable telemetry again.
 # See also https://github.com/Disassembler0/Win10-Initial-Setup-Script/issues/57 and https://github.com/Disassembler0/Win10-Initial-Setup-Script/issues/92
 Function DisableTelemetry {
-	Write-Output "Disabling Telemetry..."
+	Write-Output "Menonaktifkan Telemetry..."
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
@@ -58,7 +58,7 @@ Function DisableTelemetry {
 
 # Enable Telemetry
 Function EnableTelemetry {
-	Write-Output "Enabling Telemetry..."
+	Write-Output "Mengaktifkan Telemetry..."
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 3
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 3
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -ErrorAction SilentlyContinue
@@ -80,7 +80,7 @@ Function EnableTelemetry {
 
 # Disable Wi-Fi Sense
 Function DisableWiFiSense {
-	Write-Output "Disabling Wi-Fi Sense..."
+	Write-Output "Menonaktifkan Wi-Fi Sense..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Force | Out-Null
 	}
@@ -98,7 +98,7 @@ Function DisableWiFiSense {
 
 # Enable Wi-Fi Sense
 Function EnableWiFiSense {
-	Write-Output "Enabling Wi-Fi Sense..."
+	Write-Output "Mengaktifkan Wi-Fi Sense..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Force | Out-Null
 	}
@@ -113,7 +113,7 @@ Function EnableWiFiSense {
 
 # Disable SmartScreen Filter
 Function DisableSmartScreen {
-	Write-Output "Disabling SmartScreen Filter..."
+	Write-Output "Menonaktifkan SmartScreen Filter..."
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Type DWord -Value 0
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" -Force | Out-Null
@@ -123,14 +123,14 @@ Function DisableSmartScreen {
 
 # Enable SmartScreen Filter
 Function EnableSmartScreen {
-	Write-Output "Enabling SmartScreen Filter..."
+	Write-Output "Mengaktifkan SmartScreen Filter..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" -Name "EnabledV9" -ErrorAction SilentlyContinue
 }
 
 # Disable Web Search in Start Menu
 Function DisableWebSearch {
-	Write-Output "Disabling Bing Search in Start Menu..."
+	Write-Output "Menonaktifkan pencarian Bing di start menu..."
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "CortanaConsent" -Type DWord -Value 0
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
@@ -141,7 +141,7 @@ Function DisableWebSearch {
 
 # Enable Web Search in Start Menu
 Function EnableWebSearch {
-	Write-Output "Enabling Bing Search in Start Menu..."
+	Write-Output "Mengaktifkan pencarian Bing di Start Menu..."
 	Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -ErrorAction SilentlyContinue
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "CortanaConsent" -Type DWord -Value 1
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "DisableWebSearch" -ErrorAction SilentlyContinue
@@ -149,7 +149,7 @@ Function EnableWebSearch {
 
 # Disable Application suggestions and automatic installation
 Function DisableAppSuggestions {
-	Write-Output "Disabling Application suggestions..."
+	Write-Output "Menonaktifkan saran Aplikasi..."
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 0
@@ -183,7 +183,7 @@ Function DisableAppSuggestions {
 
 # Enable Application suggestions and automatic installation
 Function EnableAppSuggestions {
-	Write-Output "Enabling Application suggestions..."
+	Write-Output "Mengaktifkan saran Aplikasi..."
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 1
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 1
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 1
@@ -205,7 +205,7 @@ Function EnableAppSuggestions {
 
 # Disable Activity History feed in Task View - Note: The checkbox "Let Windows collect my activities from this PC" remains checked even when the function is disabled
 Function DisableActivityHistory {
-	Write-Output "Disabling Activity History..."
+	Write-Output "Menonatifkan Histori Aktivitas..."
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 0
@@ -213,7 +213,7 @@ Function DisableActivityHistory {
 
 # Enable Activity History feed in Task View
 Function EnableActivityHistory {
-	Write-Output "Enabling Activity History..."
+	Write-Output "Mengaktifkan Histori Aktivitas..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -ErrorAction SilentlyContinue
@@ -222,7 +222,7 @@ Function EnableActivityHistory {
 # Disable Background application access - ie. if apps can download or update when they aren't used
 # Cortana is excluded as its inclusion breaks start menu search, ShellExperience host breaks toasts and notifications
 Function DisableBackgroundApps {
-	Write-Output "Disabling Background application access..."
+	Write-Output "Menonaktifkan akses aplikasi di latar..."
 	Get-ChildItem -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Exclude "Microsoft.Windows.Cortana*","Microsoft.Windows.ShellExperienceHost*" | ForEach-Object {
 		Set-ItemProperty -Path $_.PsPath -Name "Disabled" -Type DWord -Value 1
 		Set-ItemProperty -Path $_.PsPath -Name "DisabledByUser" -Type DWord -Value 1
@@ -231,7 +231,7 @@ Function DisableBackgroundApps {
 
 # Enable Background application access
 Function EnableBackgroundApps {
-	Write-Output "Enabling Background application access..."
+	Write-Output "Mengaktifkan akses aplikasi di latar..."
 	Get-ChildItem -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" | ForEach-Object {
 		Remove-ItemProperty -Path $_.PsPath -Name "Disabled" -ErrorAction SilentlyContinue
 		Remove-ItemProperty -Path $_.PsPath -Name "DisabledByUser" -ErrorAction SilentlyContinue
@@ -240,7 +240,7 @@ Function EnableBackgroundApps {
 
 # Disable sensor features, such as screen auto rotation
 Function DisableSensors {
-	Write-Output "Disabling sensors..."
+	Write-Output "Menonaktifkan sensor..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Force | Out-Null
 	}
@@ -249,13 +249,13 @@ Function DisableSensors {
 
 # Enable sensor features
 Function EnableSensors {
-	Write-Output "Enabling sensors..."
+	Write-Output "Mengaktifkan sensor..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableSensors" -ErrorAction SilentlyContinue
 }
 
 # Disable location feature and scripting for the location feature
 Function DisableLocation {
-	Write-Output "Disabling location services..."
+	Write-Output "Menonaktifkan layanan lokasi..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Force | Out-Null
 	}
@@ -265,26 +265,26 @@ Function DisableLocation {
 
 # Enable location feature and scripting for the location feature
 Function EnableLocation {
-	Write-Output "Enabling location services..."
+	Write-Output "Mengaktifkan layanan aplikasi..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableLocation" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableLocationScripting" -ErrorAction SilentlyContinue
 }
 
 # Disable automatic Maps updates
 Function DisableMapUpdates {
-	Write-Output "Disabling automatic Maps updates..."
+	Write-Output "Menonaktifkan update Maps otomatis......"
 	Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
 }
 
 # Enable automatic Maps updates
 Function EnableMapUpdates {
-	Write-Output "Enable automatic Maps updates..."
+	Write-Output "Mengaktifkan update Maps otomatis..."
 	Remove-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -ErrorAction SilentlyContinue
 }
 
 # Disable Feedback
 Function DisableFeedback {
-	Write-Output "Disabling Feedback..."
+	Write-Output "Menonatifkan Feedback..."
 	If (!(Test-Path "HKCU:\Software\Microsoft\Siuf\Rules")) {
 		New-Item -Path "HKCU:\Software\Microsoft\Siuf\Rules" -Force | Out-Null
 	}
@@ -296,7 +296,7 @@ Function DisableFeedback {
 
 # Enable Feedback
 Function EnableFeedback {
-	Write-Output "Enabling Feedback..."
+	Write-Output "Mengaktifkan Feedback..."
 	Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -ErrorAction SilentlyContinue
 	Enable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue | Out-Null
@@ -305,7 +305,7 @@ Function EnableFeedback {
 
 # Disable Tailored Experiences
 Function DisableTailoredExperiences {
-	Write-Output "Disabling Tailored Experiences..."
+	Write-Output "Menonaktifkan Tailored Experiences..."
 	If (!(Test-Path "HKCU:\Software\Policies\Microsoft\Windows\CloudContent")) {
 		New-Item -Path "HKCU:\Software\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
 	}
@@ -314,13 +314,13 @@ Function DisableTailoredExperiences {
 
 # Enable Tailored Experiences
 Function EnableTailoredExperiences {
-	Write-Output "Enabling Tailored Experiences..."
+	Write-Output "Mengaktifkan Tailored Experiences..."
 	Remove-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -ErrorAction SilentlyContinue
 }
 
 # Disable Advertising ID
 Function DisableAdvertisingID {
-	Write-Output "Disabling Advertising ID..."
+	Write-Output "Menonaktifkan ID Iklan..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" | Out-Null
 	}
@@ -329,25 +329,25 @@ Function DisableAdvertisingID {
 
 # Enable Advertising ID
 Function EnableAdvertisingID {
-	Write-Output "Enabling Advertising ID..."
+	Write-Output "Mengaktifkan ID Iklan..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -ErrorAction SilentlyContinue
 }
 
 # Disable setting 'Let websites provide locally relevant content by accessing my language list'
 Function DisableWebLangList {
-	Write-Output "Disabling Website Access to Language List..."
+	Write-Output "Menonaktifkan akses Website pada daftar bahasa..."
 	Set-ItemProperty -Path "HKCU:\Control Panel\International\User Profile" -Name "HttpAcceptLanguageOptOut" -Type DWord -Value 1
 }
 
 # Enable setting 'Let websites provide locally relevant content by accessing my language list'
 Function EnableWebLangList {
-	Write-Output "Enabling Website Access to Language List..."
+	Write-Output "Mengaktifkan akses Website pada daftar bahasa..."
 	Remove-ItemProperty -Path "HKCU:\Control Panel\International\User Profile" -Name "HttpAcceptLanguageOptOut" -ErrorAction SilentlyContinue
 }
 
 # Disable Cortana
 Function DisableCortana {
-	Write-Output "Disabling Cortana..."
+	Write-Output "Menonaktifkan Cortana..."
 	If (!(Test-Path "HKCU:\Software\Microsoft\Personalization\Settings")) {
 		New-Item -Path "HKCU:\Software\Microsoft\Personalization\Settings" -Force | Out-Null
 	}
@@ -371,7 +371,7 @@ Function DisableCortana {
 
 # Enable Cortana
 Function EnableCortana {
-	Write-Output "Enabling Cortana..."
+	Write-Output "Mengaktifkan Cortana..."
 	Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Personalization\Settings" -Name "AcceptedPrivacyPolicy" -ErrorAction SilentlyContinue
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\InputPersonalization" -Name "RestrictImplicitTextCollection" -Type DWord -Value 0
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\InputPersonalization" -Name "RestrictImplicitInkCollection" -Type DWord -Value 0
@@ -383,7 +383,7 @@ Function EnableCortana {
 
 # Disable biometric features in Windows. Note - it's recommended to create a password recovery disk, if you log on using biometrics.
 Function DisableBiometrics {
-	Write-Output "Disabling biometric services..."
+	Write-Output "Menonaktifkan layanan biometric..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics" -Force | Out-Null
 	}
@@ -392,13 +392,13 @@ Function DisableBiometrics {
 
 # Enable biometric features
 Function EnableBiometrics {
-	Write-Output "Enabling biometric services..."
+	Write-Output "Mengaktifkan layanan biometric..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics" -Name "Enabled" -ErrorAction SilentlyContinue
 }
 
 # Disable access to camera from ModernUI applications
 Function DisableCamera {
-	Write-Output "Disabling access to camera from ModernUI applications..."
+	Write-Output "Menonaktifkan akses kamera dari aplikasi ModernUi..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Camera")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Camera" -Force | Out-Null
 	}
@@ -407,13 +407,13 @@ Function DisableCamera {
 
 # Enable access to camera in ModernUI applications
 Function EnableCamera {
-	Write-Output "Enabling access to camera from ModernUI applications..."
+	Write-Output "Mengaktifkan akses kamera dari aplikasi ModernUi..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Camera" -Name "AllowCamera" -ErrorAction SilentlyContinue
 }
 
 # Disable access to microphone in ModernUI applications
 Function DisableMicrophone {
-	Write-Output "Disabling access to microphone in ModernUI applications..."
+	Write-Output "Menonaktifkan akses mikrofon dari aplikasi ModernUi..."
 	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy")) {
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Force | Out-Null
 	}
@@ -422,27 +422,27 @@ Function DisableMicrophone {
 
 # Enable access to microphone in ModernUI applications
 Function EnableMicrophone {
-	Write-Output "Enabling access to microphone from ModernUI applications..."
+	Write-Output "Mengaktifkan akses mikrofon dari aplikasi ModernUi..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessMicrophone" -ErrorAction SilentlyContinue
 }
 
 # Disable Error reporting
 Function DisableErrorReporting {
-	Write-Output "Disabling Error reporting..."
+	Write-Output "Menonaktifkan laporan error..."
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
 	Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null
 }
 
 # Enable Error reporting
 Function EnableErrorReporting {
-	Write-Output "Enabling Error reporting..."
+	Write-Output "Mengaktifkan laporan error..."
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -ErrorAction SilentlyContinue
 	Enable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null
 }
 
 # Restrict Windows Update P2P delivery optimization to computers in local network - Default since 1703
 Function SetP2PUpdateLocal {
-	Write-Output "Restricting Windows Update P2P optimization to local network..."
+	Write-Output "Membatasi optimasi update Windows P2P ke jaringan lokal..."
 	If ([System.Environment]::OSVersion.Version.Build -eq 10240) {
 		# Method used in 1507
 		If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
@@ -463,7 +463,7 @@ Function SetP2PUpdateLocal {
 
 # Unrestrict Windows Update P2P delivery optimization to both local networks and internet - Default in 1507 - 1607
 Function SetP2PUpdateInternet {
-	Write-Output "Unrestricting Windows Update P2P optimization to internet..."
+	Write-Output "Mengembalikan batasan optimasi update windows P2P ke internet..."
 	If ([System.Environment]::OSVersion.Version.Build -eq 10240) {
 		# Method used in 1507
 		If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
@@ -484,7 +484,7 @@ Function SetP2PUpdateInternet {
 
 # Disable Windows Update P2P delivery optimization completely
 Function SetP2PUpdateDisable {
-	Write-Output "Disabling Windows Update P2P optimization..."
+	Write-Output "Menonaktifkan optimasi update windows P2P..."
 	If ([System.Environment]::OSVersion.Version.Build -eq 10240) {
 		# Method used in 1507
 		If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
@@ -502,21 +502,21 @@ Function SetP2PUpdateDisable {
 
 # Stop and disable Connected User Experiences and Telemetry (previously named Diagnostics Tracking Service)
 Function DisableDiagTrack {
-	Write-Output "Stopping and disabling Connected User Experiences and Telemetry Service..."
+	Write-Output "Menonaktifkan Connected User Experiences dan Layanan Telemetry..."
 	Stop-Service "DiagTrack" -WarningAction SilentlyContinue
 	Set-Service "DiagTrack" -StartupType Disabled
 }
 
 # Enable and start Connected User Experiences and Telemetry (previously named Diagnostics Tracking Service)
 Function EnableDiagTrack {
-	Write-Output "Enabling and starting Connected User Experiences and Telemetry Service ..."
+	Write-Output "Mengaktifkan Connected User Experiences dan Layanan Telemetry..."
 	Set-Service "DiagTrack" -StartupType Automatic
 	Start-Service "DiagTrack" -WarningAction SilentlyContinue
 }
 
 # Stop and disable Device Management Wireless Application Protocol (WAP) Push Service
 Function DisableWAPPush {
-	Write-Output "Stopping and disabling Device Management WAP Push Service..."
+	Write-Output "Menonaktifkan layanan Device Management Wap Push..."
 	Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
 	Set-Service "dmwappushservice" -StartupType Disabled
 }
