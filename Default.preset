@@ -226,5 +226,5 @@ UninstallXPSPrinter             # InstallXPSPrinter
 # UnpinTaskbarIcons
 
 ### Auxiliary Functions ###
-WaitForKey  # Tambah 'tagar' jika tidak mau konfirmasi
-Restart  # Tambah 'tagar' jika tidak mau restart
+WaitForKey  # Tambah 'tagar'(#) jika tidak mau konfirmasi
+Restart  # Tambah 'tagar'(#) jika tidak mau restart
